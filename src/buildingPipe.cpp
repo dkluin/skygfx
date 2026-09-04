@@ -1,6 +1,6 @@
 #include "skygfx.h"
 
-void *ps2BuildingVS, *ps2BuildingFxVS;
+void *ps2BuildingVS, *ps2BuildingFxVS, *ps2BuildingFxPS;
 void *xboxBuildingVS, *xboxBuildingPS;
 void *simpleDetailPS;
 void *simpleFogPS;
@@ -251,7 +251,7 @@ CCustomBuildingDNPipeline__CustomPipeRenderCB_PS2(RwResEntry *repEntry, void *ob
 			RwD3D9SetVertexShaderConstant(REG_fxParams, &fxParams, 1);
 
 			RwD3D9SetVertexShader(ps2BuildingFxVS);
-			RwD3D9SetPixelShader(ps2EnvSpecFxPS);
+			RwD3D9SetPixelShader(ps2BuildingFxPS);
 
 			RwRenderStateSet(rwRENDERSTATEALPHATESTFUNCTION, (void*)rwALPHATESTFUNCTIONALWAYS);
 			RwRenderStateSet(rwRENDERSTATEZWRITEENABLE, (void*)FALSE);
@@ -270,6 +270,7 @@ CCustomBuildingDNPipeline__CustomPipeRenderCB_PS2(RwResEntry *repEntry, void *ob
 	RwRenderStateSet(rwRENDERSTATEALPHATESTFUNCTIONREF, (void*)alpharef);
 	RwRenderStateSet(rwRENDERSTATEALPHATESTFUNCTION, (void*)alphafunc);
 	RwD3D9SetTexture(NULL, 1);
+	RwD3D9SetTexture(NULL, 2);	// detail map may still be bound
 	RwD3D9SetTextureStageState(1, D3DTSS_COLOROP, D3DTOP_DISABLE);
 	RwD3D9SetTextureStageState(1, D3DTSS_ALPHAOP, D3DTOP_DISABLE);
 	RwD3D9SetTextureStageState(1, D3DTSS_TEXCOORDINDEX, 1);
@@ -382,6 +383,7 @@ CCustomBuildingDNPipeline__CustomPipeRenderCB_Xbox(RwResEntry *repEntry, void *o
 		D3D9RenderDual(config->dualPassBuilding, resEntryHeader, instancedData);
 	}
 	RwD3D9SetTexture(NULL, 1);
+	RwD3D9SetTexture(NULL, 2);	// detail map may still be bound
 	RwD3D9SetTextureStageState(1, D3DTSS_COLOROP, D3DTOP_DISABLE);
 	RwD3D9SetTextureStageState(1, D3DTSS_ALPHAOP, D3DTOP_DISABLE);
 	RwD3D9SetTextureStageState(1, D3DTSS_TEXCOORDINDEX, 1);

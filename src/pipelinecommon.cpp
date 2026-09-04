@@ -338,6 +338,7 @@ CreateShaders(void)
 	// building
 	makeVS(IDR_PS2BUILDINGVS, &ps2BuildingVS);
 	makeVS(IDR_PS2BUILDINGFXVS, &ps2BuildingFxVS);
+	makePS(IDR_PS2BUILDINGFXPS, &ps2BuildingFxPS);
 	makeVS(IDR_XBOXBUILDINGVS, &xboxBuildingVS);
 	makePS(IDR_XBOXBUILDINGPS, &xboxBuildingPS);
 	makePS(IDR_SIMPLEDETAILPS, &simpleDetailPS);

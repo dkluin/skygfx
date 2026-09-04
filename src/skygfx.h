@@ -304,7 +304,7 @@ extern void *iiiTrailsPS, *vcTrailsPS;
 extern void *gradingPS, *contrastPS;
 extern void *blurPS, *radiosityPS;
 // building
-extern void *ps2BuildingVS, *ps2BuildingFxVS;
+extern void *ps2BuildingVS, *ps2BuildingFxVS, *ps2BuildingFxPS;
 extern void *xboxBuildingVS, *xboxBuildingPS;
 extern void *simpleDetailPS;
 extern void *simpleFogPS;
